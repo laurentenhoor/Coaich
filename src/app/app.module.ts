@@ -5,7 +5,8 @@ import { MyApp } from './app.component';
 
 import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
-import { HomePage } from '../pages/home/home';
+import { Diary } from '../pages/diary/diary';
+import { NoteEdit } from '../pages/note-edit/note-edit';
 import { TabsPage } from '../pages/tabs/tabs';
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -16,8 +17,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     MyApp,
     AboutPage,
     ContactPage,
-    HomePage,
-    TabsPage
+    Diary,
+    TabsPage,
+    NoteEdit
   ],
   imports: [
     BrowserModule,
@@ -28,8 +30,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     MyApp,
     AboutPage,
     ContactPage,
-    HomePage,
-    TabsPage
+    Diary,
+    TabsPage,
+    NoteEdit
   ],
   providers: [
     StatusBar,
