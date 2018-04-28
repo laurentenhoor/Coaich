@@ -10,7 +10,7 @@ import { NoteEdit } from '../note-edit/note-edit';
 export class Diary {
 
   constructor(public navCtrl: NavController) {
-    this.edit(null)
+  
   }
 
   edit(note):void {
