@@ -1,4 +1,4 @@
-const Tone = require('./watson/tone');
+const Tone = require('../watson/tone');
 const bodyParser = require('body-parser');
 
 module.exports = (app) => {
