@@ -4,11 +4,5 @@
   "type": "ionic-angular",
   "integrations": {
     "cordova": {}
-  },
-  "proxies": [
-    {
-      "path": "/api",
-      "proxyUrl": "https://gateway-fra.watsonplatform.net/tone-analyzer/api/v3/tone?version=2017-09-21"
-    }
-  ]
+  }
 }

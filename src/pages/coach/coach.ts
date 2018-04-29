@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, ModalController } from 'ionic-angular';
+import { Login } from '../login/login';
 
 @Component({
   selector: 'coach',
@@ -7,8 +8,12 @@ import { NavController } from 'ionic-angular';
 })
 export class Coach {
 
-  constructor(public navCtrl: NavController) {
+  constructor(public modalCtrl: ModalController) {
     
+  }
+
+  logout() {
+    this.modalCtrl.create(Login).present();
   }
 
 }
