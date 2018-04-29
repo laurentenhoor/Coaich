@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 
 import { Subject } from "rxjs/Subject";
 import "rxjs/add/operator/debounceTime";
+
 import { Notes } from '../../providers/notes';
 import { Note } from '../../models/note';
 
@@ -18,9 +19,16 @@ export class NoteEdit {
 
   constructor(
     public navCtrl: NavController,
-    public notesService: Notes
+    public notesService: Notes,
+    public navParams: NavParams
   ) {
     this.initInputDebounceForSaving();
+    let note = navParams.get('note');
+    if (note) {
+      this.note = note;
+    } else {
+      this.note.createdAt = new Date();
+    }
   }
 
   onSearchType(value: string) {
@@ -31,13 +39,16 @@ export class NoteEdit {
   private initInputDebounceForSaving() {
 
     this.searchUpdated.asObservable()
-      .debounceTime(400)
+      .debounceTime(600)
       .subscribe(debouncedEvent => {
         this.isChanging = false;
         this.isSaved = true;
-        console.log(this.note)
+        this.note.editedAt = new Date();
+        this.notesService.save(this.note)
+          .then(noteId => {
+            this.note._id = noteId;
+          })
       });
-
   }
 
 }

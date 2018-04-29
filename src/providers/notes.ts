@@ -1,4 +1,4 @@
-import { Injectable, NgZone } from '@angular/core';
+import { Injectable, NgZone, ReflectiveInjector } from '@angular/core';
 import { Note } from '../models/note';
 import PouchDB from 'pouchdb';
 
@@ -19,9 +19,37 @@ export class Notes {
         // });
     }
 
-    getNotes(): Promise<Note[]> {
+    save(note: Note): Promise<string> {
+        return new Promise((resolve, reject) => {
+            console.log('upsert note', note)
+            let self = this;
+            if (note._id) {
+                self.localDb.get(note._id).then(doc => {
+                    note._rev = doc._rev;
+                    self.localDb.put(note, (err, response) => {
+                        if (err) {
+                            return reject(err)
+                        } else {
+                            return resolve(response.id);
+                        }
+                    });
+                })
+            } else {
+                self.localDb.post(note, (err, response) => {
+                    if (err) {
+                        return reject(err)
+                    } else {
+                        return resolve(response.id);
+                    }
+                });
+            }
+        })
+
+    }
+
+    getAll(): Promise<Note[]> {
         if (this.data) {
-            return new Promise(resolve=> {resolve(this.data)});
+            return new Promise(resolve => { resolve(this.data) });
         }
 
         return new Promise(resolve => {
@@ -37,7 +65,11 @@ export class Notes {
                 });
                 resolve(this.data);
 
-                this.localDb.changes({ live: true, since: 'now', include_docs: true }).on('change', (change) => {
+                this.localDb.changes({
+                    live: true,
+                    since: 'now',
+                    include_docs: true
+                }).on('change', (change) => {
                     this.handleChange(change);
                 });
 
@@ -48,29 +80,14 @@ export class Notes {
         });
     }
 
-    createNote(note:Note) {
-        this.localDb.post(note).then((result) => {
-            console.log('createNote', JSON.stringify(result));
-        }).catch((err) => {
-            console.error(JSON.stringify(err));
-        });
-    }
 
-    updateNote(note:Note) {
-        this.localDb.put(note).catch((err) => {
-            console.error(err);
-        });
-
-    }
-
-    deleteNote(note:Note) {
+    delete(note: Note) {
         this.localDb.remove(note).catch((err) => {
             console.error(err);
         });
-        this.getNotes();
     }
 
-    handleChange(change) {
+    private handleChange(change) {
 
         let changedDoc = null;
         let changedIndex = null;

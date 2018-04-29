@@ -19,13 +19,13 @@ export class TabsPage {
 
   constructor(public modalCtrl: ModalController) {
 
-    let self = this;
-    self.modalCtrl.create(Login).present();
-    
-    document.addEventListener("pause", function() {
-      console.log('App paused: to background!')
-      self.modalCtrl.create(Login).present();
-    }, true);
+    // let self = this;
+    // self.modalCtrl.create(Login).present();
+
+    // document.addEventListener("pause", function () {
+    //     console.log('App paused: to background!')
+    //     self.modalCtrl.create(Login).present();
+    // }, true);
 
   }
 }

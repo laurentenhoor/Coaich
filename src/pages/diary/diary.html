@@ -1,27 +1,41 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Personal Diary</ion-title>
+    <ion-title>
+      <ion-icon name="lock"></ion-icon> Personal Diary</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
   <ion-list>
-      <!-- <ion-list-header>
+    <!-- <ion-list-header>
           Today
         </ion-list-header> -->
-        <ion-item-divider color="light">Today</ion-item-divider>
-    <ion-item (click)="edit()">
-      <ion-thumbnail item-start>
+    <!-- <ion-item-divider color="light">Today</ion-item-divider> -->
+
+    <ion-item-sliding *ngFor="let note of notes | async">
+      <ion-item (click)="edit(note)">
+        <!-- <ion-thumbnail item-start>
         <img src="https://m.media-amazon.com/images/S/aplus-media/vc/526e848f-50a1-46b6-984d-771757cb7512.jpg">
-      </ion-thumbnail>
-      <h2>My Neighbor Totoro</h2>
-      <p>Hayao Miyazaki • 1988</p>
-      <button ion-button clear item-end>View</button>
-    </ion-item>
+      </ion-thumbnail> -->
+        <h2>{{ note.title }}</h2>
+        <h3>{{ note.text }}</h3>
+        <p>{{ note.editedAt | date:'EEEE, MMMM d, y, h:mm a' }}</p>
+        <!-- <button ion-button clear item-end>View</button> -->
+      </ion-item>
+      <ion-item-options side="right" >
+          <button ion-button color="danger" (click)="delete(note)">
+            <ion-icon name="trash"></ion-icon>
+            Delete
+          </button>
+        </ion-item-options>
+    </ion-item-sliding>
+
   </ion-list>
 
 
   <ion-fab bottom right (click)="edit()">
-      <button ion-fab><ion-icon name="add"></ion-icon></button>
+    <button ion-fab>
+      <ion-icon name="add"></ion-icon>
+    </button>
   </ion-fab>
 </ion-content>
