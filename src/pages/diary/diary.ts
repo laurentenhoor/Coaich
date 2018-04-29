@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, ModalController, App } from 'ionic-angular';
 
 import { NoteEdit } from '../note-edit/note-edit';
 
@@ -9,12 +9,18 @@ import { NoteEdit } from '../note-edit/note-edit';
 })
 export class Diary {
 
-  constructor(public navCtrl: NavController) {
+  constructor(
+    public navCtrl: NavController,
+    public modalCtrl: ModalController,
+    public app: App,
+  ) {
   
   }
 
+
   edit(note):void {
-    this.navCtrl.push(NoteEdit);
+    // this.navCtrl.push(NoteEdit);
+    this.app.getRootNav().push(NoteEdit)
   }
 
 }

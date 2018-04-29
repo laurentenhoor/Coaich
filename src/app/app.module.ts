@@ -13,6 +13,8 @@ import { Login } from '../pages/login/login';
 import { NoteEdit } from '../pages/note-edit/note-edit';
 import { TabsPage } from '../pages/tabs/tabs';
 
+import { Notes } from '../providers/notes';
+
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
@@ -46,6 +48,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     FingerprintAIO,
     TouchID,
+    Notes,
   ]
 })
 export class AppModule {}

@@ -3,7 +3,6 @@ import { Platform } from 'ionic-angular';
 import { NavController, ViewController } from 'ionic-angular';
 import { FingerprintAIO, FingerprintOptions } from '@ionic-native/fingerprint-aio';
 import { TouchID } from '@ionic-native/touch-id';
-import { TabsPage } from '../tabs/tabs';
 
 @Component({
     selector: 'login',
