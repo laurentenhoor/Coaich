@@ -28,12 +28,19 @@ export class Login {
             localizedFallbackTitle: 'Use Pin', // Only iOS
             localizedReason: 'Please authenticate' // Only iOS
         }
+        this.platform.resume.subscribe(() => {
+            this.login();
+        });
+        
     }
 
-    ionViewDidEnter() {
-        this.login();
+    ngAfterViewInit() {
+        console.log('afterviewinit')
+        setTimeout(()=>{
+            this.login();
+        },500)        
     }
-
+ 
     login() {
         this.touchId.verifyFingerprintWithCustomPasswordFallback('This is a secure environment.')
             .then(

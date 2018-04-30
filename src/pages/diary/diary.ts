@@ -7,6 +7,7 @@ import { Note } from '../../models/note';
 import { TouchID } from '@ionic-native/touch-id';
 import { LoginService } from '../login/login.service';
 import { Login } from '../login/login';
+import { SplashScreen } from '@ionic-native/splash-screen';
 
 @Component({
   selector: 'diary',
@@ -24,6 +25,7 @@ export class Diary {
     private notesService: Notes,
     private touchId: TouchID,
     private loginService: LoginService,
+    private splashScreen: SplashScreen
   ) {
     this.notes = this.notesService.getAll();
     this.platform.ready().then(() => {
@@ -31,7 +33,6 @@ export class Diary {
         console.log('[INFO] App paused');
         this.loginService.show(this.navCtrl, Login);
       });
-
       this.platform.resume.subscribe(() => {
         console.log('[INFO] App resumed');
       });
