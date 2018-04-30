@@ -27,16 +27,19 @@ export class Login {
         }
     }
 
-    ionViewDidLoad() {
+    ionViewDidEnter() {
         this.login();
     }
 
     login() {
-        this.touchId.verifyFingerprintWithCustomPasswordFallback('Scan your fingerprint please')
-            .then(
-                res => this.viewCtrl.dismiss(),
-                err => console.error(err)
-            );
+        // this.touchId.verifyFingerprintWithCustomPasswordFallback('Scan your fingerprint please')
+        //     .then(
+        //         res => this.viewCtrl.dismiss(),
+        //         err => console.error(err)
+        //     );
+        this.faio.show(this.fingerprintOptions).then(() => {
+            this.viewCtrl.dismiss()
+        })
     }
 
 }

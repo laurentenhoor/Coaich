@@ -23,7 +23,6 @@ export class Diary {
     private touchId: TouchID
   ) {
     this.notes = this.notesService.getAll();
-    this.initAuth();
   }
 
   edit(note: Note): void {
@@ -55,20 +54,12 @@ export class Diary {
 
   }
 
-  initAuth() {
-    this.touchId.isAvailable()
-      .then(isTrue => {
-
-        let self = this;
-        self.modalCtrl.create(Login).present()
-
-        document.addEventListener("pause", function () {
-          console.log('App paused: to background!')
-          self.modalCtrl.create(Login).present();
-        }, true);
-      },
-        isFalse => { }
-      );
+  ionViewDidLoad() {
+    let self = this;
+    self.modalCtrl.create(Login).present()
+    document.addEventListener("pause", function () {
+      console.log('App paused: to background!')
+      self.modalCtrl.create(Login).present();
+    }, true);
   }
-
 }
