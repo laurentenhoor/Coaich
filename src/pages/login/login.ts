@@ -32,14 +32,17 @@ export class Login {
     }
 
     login() {
-        // this.touchId.verifyFingerprintWithCustomPasswordFallback('Scan your fingerprint please')
-        //     .then(
-        //         res => this.viewCtrl.dismiss(),
-        //         err => console.error(err)
-        //     );
-        this.faio.show(this.fingerprintOptions).then(() => {
-            this.viewCtrl.dismiss()
-        })
+
+        this.touchId.verifyFingerprintWithCustomPasswordFallback('Scan your fingerprint please')
+            .then(
+                res => this.viewCtrl.dismiss(),
+                err => this.login()
+            );
+
+        // this.faio.show(this.fingerprintOptions).then(() => {
+        //     this.viewCtrl.dismiss()
+        // })
+
     }
 
 }
