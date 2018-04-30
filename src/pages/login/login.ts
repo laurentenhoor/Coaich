@@ -3,6 +3,7 @@ import { Platform } from 'ionic-angular';
 import { NavController, ViewController } from 'ionic-angular';
 import { FingerprintAIO, FingerprintOptions } from '@ionic-native/fingerprint-aio';
 import { TouchID } from '@ionic-native/touch-id';
+import { Diary } from '../../pages/diary/diary';
 
 @Component({
     selector: 'login',
@@ -33,9 +34,9 @@ export class Login {
 
     login() {
 
-        this.touchId.verifyFingerprintWithCustomPasswordFallback('Scan your fingerprint please')
+        this.touchId.verifyFingerprintWithCustomPasswordFallback('This is a secure environment.')
             .then(
-                res => this.viewCtrl.dismiss(),
+                res => this.navCtrl.setRoot(Diary),
                 err => {}
             );
 

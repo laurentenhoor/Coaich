@@ -46,7 +46,6 @@ export class Diary {
           handler: () => {
             console.log('Delete note', note);
             this.notesService.delete(note);
-
           }
         }
       ]
@@ -56,10 +55,10 @@ export class Diary {
 
   ionViewDidLoad() {
     let self = this;
-    self.modalCtrl.create(Login).present()
+    // self.modalCtrl.create(Login).present()
     document.addEventListener("pause", function () {
       console.log('App paused: to background!')
-      self.modalCtrl.create(Login).present();
+      self.navCtrl.setRoot(Login);
     }, true);
   }
 }

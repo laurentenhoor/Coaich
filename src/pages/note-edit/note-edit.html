@@ -20,11 +20,11 @@
 <ion-content overflow-scroll="true" no-bounce>
 
     <ion-item>
-        <ion-input [(ngModel)]="note.title" (keyup)="onSearchType($event)" type="text" value="" style=" font-weight: bold;" placeholder="Title, subject, topic..."></ion-input>
+        <ion-input [(ngModel)]="note.title" (keyup)="onSearchType($event)" autocomplete=“on”  autocorrect=“on” type="text" value="" style=" font-weight: bold;" placeholder="Topic"></ion-input>
     </ion-item>
 
     <ion-item>
-        <ion-textarea [(ngModel)]="note.text" (keyup)="onSearchType($event)" placeholder="What's on your mind?" rows="15"></ion-textarea>
+        <ion-textarea [(ngModel)]="note.text" (keyup)="onSearchType($event)" autocomplete=“on”  autocorrect=“on” placeholder="What's on your mind?" rows="15"></ion-textarea>
     </ion-item>
 
 </ion-content>
