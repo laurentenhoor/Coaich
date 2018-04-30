@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="io.ionic.starter" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>Brain Works</name>
-    <description>Continiously Improve Your Mind</description>
+<widget id="com.nozemans.coaich" version="0.0.3" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>My Brain Works</name>
+    <description>Artificial Psychologist</description>
     <author email="laurentenhoor@gmail.com" href="http://nozemans.com/">Lauren ten Hoor</author>
     <content src="index.html" />
     <access origin="*" />
