@@ -36,7 +36,7 @@ export class Login {
         this.touchId.verifyFingerprintWithCustomPasswordFallback('Scan your fingerprint please')
             .then(
                 res => this.viewCtrl.dismiss(),
-                err => this.login()
+                err => {}
             );
 
         // this.faio.show(this.fingerprintOptions).then(() => {
