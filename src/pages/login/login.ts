@@ -33,13 +33,11 @@ export class Login {
     }
 
     login() {
-
         this.touchId.verifyFingerprintWithCustomPasswordFallback('This is a secure environment.')
             .then(
                 res => this.navCtrl.setRoot(Diary),
-                err => {}
+                err => { }
             );
-
         // this.faio.show(this.fingerprintOptions).then(() => {
         //     this.viewCtrl.dismiss()
         // })

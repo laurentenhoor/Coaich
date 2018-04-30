@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, ModalController, App, AlertController } from 'ionic-angular';
+import { NavController, ModalController, App, AlertController, Platform } from 'ionic-angular';
 
 import { NoteEdit } from '../note-edit/note-edit';
 import { Notes } from '../../providers/notes';
@@ -18,11 +18,22 @@ export class Diary {
     private navCtrl: NavController,
     private modalCtrl: ModalController,
     private alertCtrl: AlertController,
+    private platform: Platform,
     private app: App,
     private notesService: Notes,
     private touchId: TouchID
   ) {
     this.notes = this.notesService.getAll();
+    this.platform.ready().then(() => {
+      this.platform.pause.subscribe(() => {
+        console.log('[INFO] App paused');
+        this.navCtrl.setRoot(Login);
+      });
+
+      this.platform.resume.subscribe(() => {
+        console.log('[INFO] App resumed');
+      });
+    });
   }
 
   edit(note: Note): void {
@@ -51,14 +62,5 @@ export class Diary {
       ]
     }).present();;
 
-  }
-
-  ionViewDidLoad() {
-    let self = this;
-    // self.modalCtrl.create(Login).present()
-    document.addEventListener("pause", function () {
-      console.log('App paused: to background!')
-      self.navCtrl.setRoot(Login);
-    }, true);
   }
 }
