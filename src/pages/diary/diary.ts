@@ -4,8 +4,9 @@ import { NavController, ModalController, App, AlertController, Platform } from '
 import { NoteEdit } from '../note-edit/note-edit';
 import { Notes } from '../../providers/notes';
 import { Note } from '../../models/note';
-import { Login } from '../login/login';
 import { TouchID } from '@ionic-native/touch-id';
+import { LoginService } from '../login/login.service';
+import { Login } from '../login/login';
 
 @Component({
   selector: 'diary',
@@ -21,13 +22,14 @@ export class Diary {
     private platform: Platform,
     private app: App,
     private notesService: Notes,
-    private touchId: TouchID
+    private touchId: TouchID,
+    private loginService: LoginService,
   ) {
     this.notes = this.notesService.getAll();
     this.platform.ready().then(() => {
       this.platform.pause.subscribe(() => {
         console.log('[INFO] App paused');
-        this.navCtrl.setRoot(Login);
+        this.loginService.show(this.navCtrl, Login);
       });
 
       this.platform.resume.subscribe(() => {

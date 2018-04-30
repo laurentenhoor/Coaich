@@ -17,6 +17,7 @@ import { Notes } from '../providers/notes';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { LoginService } from '../pages/login/login.service';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     Diary,
     Login,
     TabsPage,
-    NoteEdit
+    NoteEdit,
   ],
   providers: [
     StatusBar,
@@ -49,6 +50,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     FingerprintAIO,
     TouchID,
     Notes,
+    LoginService,
   ]
 })
 export class AppModule {}
