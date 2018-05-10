@@ -8,8 +8,10 @@ import { Login } from '../login/login';
 })
 export class Coach {
 
-  constructor(public modalCtrl: ModalController) {
-    
+  constructor(
+    private modalCtrl: ModalController
+  ) {
+
   }
 
   logout() {

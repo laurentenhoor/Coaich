@@ -16,6 +16,15 @@ export class NoteEdit {
   private isChanging: Boolean = false;
   private isSaved: Boolean = false;
   private note: Note = {};
+  private emojiMapping = {
+    'analytical' : '🤔',
+    'confident': '👌',
+    'tentative':'🙄',
+    'sadness': '😢',
+    'anger': '😡',
+    'fear': '😧',
+    'joy' : '😂',
+  }
 
   constructor(
     public navCtrl: NavController,
@@ -26,7 +35,6 @@ export class NoteEdit {
     let note = navParams.get('note');
     if (note) {
       this.note = note;
-      console.log()
     } else {
       this.note.createdAt = new Date();
     }
@@ -42,13 +50,20 @@ export class NoteEdit {
     this.searchUpdated.asObservable()
       .debounceTime(600)
       .subscribe(debouncedEvent => {
+        
         this.isChanging = false;
         this.isSaved = true;
         this.note.editedAt = new Date();
+
         this.notesService.save(this.note)
           .then(updatedNote => {
+
+            // do not overwrite the content text
+            // it's text might already been updated by 
+            // the user before this callback returns
             this.note.tone = updatedNote.tone ;
             this.note._id = updatedNote._id;
+
           })
       });
   }

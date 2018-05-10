@@ -1,14 +1,15 @@
 <ion-header>
     <ion-navbar>
-        <ion-title><ion-icon name="lock"></ion-icon> Brain Dump</ion-title>
+        <ion-title>
+            <ion-icon name="lock"></ion-icon> Brain Dump</ion-title>
         <ion-buttons end>
-            
+
             <button ion-button icon-only *ngIf="!isChanging && !isSaved">
                 <!-- <ion-icon  name=""></ion-icon> -->
             </button>
             <button ion-button icon-only *ngIf="isChanging">
-                    <!-- <ion-icon name="cloud"></ion-icon> -->
-                </button>
+                <!-- <ion-icon name="cloud"></ion-icon> -->
+            </button>
             <button ion-button icon-only *ngIf="!isChanging && isSaved">
                 <!-- <ion-icon  name="cloud-done"></ion-icon> -->
             </button>
@@ -20,15 +21,18 @@
 <ion-content overflow-scroll="true" no-bounce>
 
     <ion-item>
-        <ion-input [(ngModel)]="note.title" (keyup)="onSearchType($event)" autocomplete=“on”  autocorrect=“on” type="text" value="" style=" font-weight: bold;" placeholder="Topic"></ion-input>
+        <ion-input [(ngModel)]="note.title" (keyup)="onSearchType($event)" autocomplete=“on” autocorrect=“on” type="text" value=""
+            style=" font-weight: bold;" placeholder="Topic"></ion-input>
     </ion-item>
 
     <ion-item>
-        <ion-textarea [(ngModel)]="note.text" (keyup)="onSearchType($event)" autocomplete=“on”  autocorrect=“on” placeholder="What's on your mind?" rows="15"></ion-textarea>
+        <ion-textarea [(ngModel)]="note.text" (keyup)="onSearchType($event)" autocomplete=“on” autocorrect=“on” placeholder="What's on your mind?"
+            rows="15"></ion-textarea>
     </ion-item>
 
     <div *ngFor="let tone of note?.tone?.document_tone?.tones">
-        {{ tone.tone_name }} - {{ tone.score }}
+        <span style="font-size:50px;">{{ emojiMapping[tone.tone_id] }}</span>{{ tone.score }}
     </div>
+
 
 </ion-content>
