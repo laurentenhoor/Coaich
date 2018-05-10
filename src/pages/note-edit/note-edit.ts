@@ -26,6 +26,7 @@ export class NoteEdit {
     let note = navParams.get('note');
     if (note) {
       this.note = note;
+      console.log()
     } else {
       this.note.createdAt = new Date();
     }
@@ -45,8 +46,9 @@ export class NoteEdit {
         this.isSaved = true;
         this.note.editedAt = new Date();
         this.notesService.save(this.note)
-          .then(noteId => {
-            this.note._id = noteId;
+          .then(updatedNote => {
+            this.note.tone = updatedNote.tone ;
+            this.note._id = updatedNote._id;
           })
       });
   }

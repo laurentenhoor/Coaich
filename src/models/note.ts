@@ -4,5 +4,6 @@ export interface Note {
     text?: string,
     createdAt?: Date,
     editedAt?: Date,
-    _rev?: string
+    _rev?: string,
+    tone?: Object
 }

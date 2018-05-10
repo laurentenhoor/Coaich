@@ -4,6 +4,7 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { FingerprintAIO } from '@ionic-native/fingerprint-aio';
 import { TouchID } from '@ionic-native/touch-id';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 
 import { Goals } from '../pages/goals/goals';
 import { Coach } from '../pages/coach/coach';
@@ -31,7 +32,8 @@ import { LoginService } from '../pages/login/login.service';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    HttpClientModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -51,6 +53,7 @@ import { LoginService } from '../pages/login/login.service';
     TouchID,
     Notes,
     LoginService,
+    HttpClient,
   ]
 })
 export class AppModule {}
