@@ -27,7 +27,7 @@
         <ion-textarea [(ngModel)]="note.text" (keyup)="onSearchType($event)" autocomplete=“on”  autocorrect=“on” placeholder="What's on your mind?" rows="15"></ion-textarea>
     </ion-item>
 
-    <div *ngFor="let tone of note.tone.document_tone.tones">
+    <div *ngFor="let tone of note?.tone?.document_tone?.tones">
         {{ tone.tone_name }} - {{ tone.score }}
     </div>
 
