@@ -26,7 +26,7 @@ export class Notes {
     getNoteTone(note: Note): Promise<any> {
         return new Promise((resolve, reject) => {
             if (!note.text) {
-                reject('no text to scan')
+                resolve(null)
             }
             const apiUrl = 'http://localhost:3000/tone';
             const httpOptions = {
@@ -77,6 +77,7 @@ export class Notes {
                     if (err) {
                         return reject(err)
                     } else {
+                        note._id=response.id;
                         return resolve(note);
                     }
                 });

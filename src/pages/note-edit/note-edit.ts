@@ -23,7 +23,7 @@ export class NoteEdit {
     'sadness': '😢',
     'anger': '😡',
     'fear': '😧',
-    'joy' : '😂',
+    'joy' : '😃',
   }
 
   constructor(
@@ -57,7 +57,7 @@ export class NoteEdit {
 
         this.notesService.save(this.note)
           .then(updatedNote => {
-
+            console.log('updatedNote', updatedNote)
             // do not overwrite the content text
             // it's text might already been updated by 
             // the user before this callback returns
