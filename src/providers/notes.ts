@@ -28,7 +28,7 @@ export class Notes {
             if (!note.text) {
                 resolve(null)
             }
-            const apiUrl = 'http://localhost:3000/tone';
+            const apiUrl = 'http://ec2-34-239-163-2.compute-1.amazonaws.com:3000/tone';
             const httpOptions = {
                 headers: new HttpHeaders({
                     'Content-Type': 'application/json',
@@ -41,6 +41,7 @@ export class Notes {
                 console.log('Watson API response:', response)
                 resolve(response);
             }, error => {
+                console.error(JSON.stringify(error));
                 reject(error)
             });
         })
