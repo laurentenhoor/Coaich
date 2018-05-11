@@ -37,6 +37,9 @@ export class NoteEdit {
     this.isChanging = true;
   }
 
+  ionViewWillLeave() {
+  }
+
   private initInputDebounceForSaving() {
 
     this.searchUpdated.asObservable()

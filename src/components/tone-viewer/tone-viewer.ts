@@ -19,7 +19,7 @@ export class ToneViewer {
   }
 
   private bannedTones = [
-    // 'analytical', 'confident', 'tentative'
+    'analytical', 'confident', 'tentative'
   ]
 
   constructor() {
