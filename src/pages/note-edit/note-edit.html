@@ -30,9 +30,6 @@
             rows="15"></ion-textarea>
     </ion-item>
 
-    <div *ngFor="let tone of note?.tone?.document_tone?.tones">
-        <span style="font-size:50px;">{{ emojiMapping[tone.tone_id] }}</span>{{ tone.score }}
-    </div>
-
+    <tone-viewer [tone]="note.tone"></tone-viewer>
 
 </ion-content>

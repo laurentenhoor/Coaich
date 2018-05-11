@@ -1,0 +1,19 @@
+<div *ngFor="let tone of tone?.document_tone?.tones" style="padding: 4px 16px;
+">
+
+    <h5 style="text-align:center;">{{ tone.tone_name}}</h5>
+
+    <div style="display: flex; flex-direction:row;">
+        <div style="display:flex;flex-direction: column;">
+            <span style="font-size:40px;padding-right:4px;">{{ emojiMapping[tone.tone_id] }}</span>
+        </div>
+
+        <div style="display:flex;width:-webkit-fill-available">
+            <div class="progress-outer">
+                <div class="progress-inner" [style.width]="tone.score * 100 + '%'">
+                    {{ tone.score*100 | number: '1.0-0' }}%
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -16,15 +16,7 @@ export class NoteEdit {
   private isChanging: Boolean = false;
   private isSaved: Boolean = false;
   private note: Note = {};
-  private emojiMapping = {
-    'analytical' : '🤔',
-    'confident': '👌',
-    'tentative':'🙄',
-    'sadness': '😢',
-    'anger': '😡',
-    'fear': '😧',
-    'joy' : '😃',
-  }
+  
 
   constructor(
     public navCtrl: NavController,
@@ -57,13 +49,11 @@ export class NoteEdit {
 
         this.notesService.save(this.note)
           .then(updatedNote => {
-            console.log('updatedNote', updatedNote)
             // do not overwrite the content text
             // it's text might already been updated by 
             // the user before this callback returns
             this.note.tone = updatedNote.tone ;
             this.note._id = updatedNote._id;
-
           })
       });
   }

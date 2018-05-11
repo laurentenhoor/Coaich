@@ -19,6 +19,7 @@ import { Notes } from '../providers/notes';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { LoginService } from '../pages/login/login.service';
+import { ToneViewer } from '../components/tone-viewer/tone-viewer';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { LoginService } from '../pages/login/login.service';
     Diary,
     Login,
     TabsPage,
-    NoteEdit
+    NoteEdit,
+    ToneViewer,
   ],
   imports: [
     BrowserModule,

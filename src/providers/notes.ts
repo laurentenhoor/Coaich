@@ -59,7 +59,6 @@ export class Notes {
 
     updateOrInsert(note: Note): Promise<Note> {
         return new Promise((resolve, reject) => {
-            console.log('Upsert note', note)
             let self = this;
             if (note._id) {
                 self.localDb.get(note._id).then(doc => {
