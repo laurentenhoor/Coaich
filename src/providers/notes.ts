@@ -23,6 +23,8 @@ export class Notes {
         // });
     }
 
+
+
     private getNoteTone(note: Note): Promise<any> {
         return new Promise((resolve, reject) => {
             if (!note.text) {
@@ -95,6 +97,17 @@ export class Notes {
             }
         })
 
+    }
+
+    getById(id: string) {
+        return new Promise((resolve, reject) => {
+            this.localDb.get(id).then(function (doc) {
+                resolve(doc);
+            }).catch(function (err) {
+                console.log(err);
+                reject(err);
+            });
+        })
     }
 
     getAll(): Promise<Note[]> {

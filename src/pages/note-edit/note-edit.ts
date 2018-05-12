@@ -28,7 +28,7 @@ export class NoteEdit {
     this.initInputDebounceForSaving();
     let note = navParams.get('note');
     if (note) {
-      this.note = note;
+      this.notesService.getById(note._id).then(note => this.note=note);
     } else {
       this.note.createdAt = new Date();
     }
@@ -50,6 +50,7 @@ export class NoteEdit {
     this.changedAndNotAnalyzedYet = false;
     this.loadingTone = true;
     this.notesService.analyzeTone(this.note).then(updatedNote => {
+      console.log('received updated tone', updatedNote)
       this.note.tone = updatedNote.tone;
       this.loadingTone = false;
     })
