@@ -2,7 +2,7 @@
 ">
     <div *ngIf="bannedTones && tone && bannedTones.indexOf(tone.tone_id) == -1">
 
-        <h5 style="text-align:center;">{{ tone.tone_name }}</h5>
+        <h5 style="text-align:center;">{{ tone.tone_id == 'analytical' ? 'Neutral' : (tone.tone_id == 'tentative' ? 'Hesitant' : tone.tone_name)}}</h5>
 
         <div style="display: flex; flex-direction:row;">
             <div style="display:flex;flex-direction: column;">

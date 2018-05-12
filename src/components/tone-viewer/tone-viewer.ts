@@ -9,7 +9,7 @@ export class ToneViewer {
   @Input('tone') tone;
 
   private emojiMapping = {
-    'analytical': '🔬',
+    'analytical': '😐',
     'confident': '💪',
     'tentative': '🤷‍',
     'sadness': '😢',
@@ -19,7 +19,7 @@ export class ToneViewer {
   }
 
   private bannedTones = [
-    'analytical', 'confident', 'tentative'
+    // 'analytical', 'confident', 'tentative'
   ]
 
   constructor() {

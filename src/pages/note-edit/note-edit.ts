@@ -6,6 +6,7 @@ import "rxjs/add/operator/debounceTime";
 
 import { Notes } from '../../providers/notes';
 import { Note } from '../../models/note';
+import { updateDate } from 'ionic-angular/util/datetime-util';
 
 @Component({
   selector: 'note-edit',
@@ -16,7 +17,8 @@ export class NoteEdit {
   private isChanging: Boolean = false;
   private isSaved: Boolean = false;
   private note: Note = {};
-  
+  private loadingTone: Boolean = false;
+  private changedAndNotAnalyzedYet: Boolean = false;
 
   constructor(
     public navCtrl: NavController,
@@ -35,17 +37,29 @@ export class NoteEdit {
   onSearchType(value: string) {
     this.searchUpdated.next(value);
     this.isChanging = true;
+    this.changedAndNotAnalyzedYet = true;
   }
 
   ionViewWillLeave() {
+    if (this.changedAndNotAnalyzedYet) {
+      this.analyze();
+    }
+  }
+
+  analyze() {
+    this.changedAndNotAnalyzedYet = false;
+    this.loadingTone = true;
+    this.notesService.analyzeTone(this.note).then(updatedNote => {
+      this.note.tone = updatedNote.tone;
+      this.loadingTone = false;
+    })
   }
 
   private initInputDebounceForSaving() {
-
     this.searchUpdated.asObservable()
       .debounceTime(600)
       .subscribe(debouncedEvent => {
-        
+
         this.isChanging = false;
         this.isSaved = true;
         this.note.editedAt = new Date();
@@ -55,7 +69,6 @@ export class NoteEdit {
             // do not overwrite the content text
             // it's text might already been updated by 
             // the user before this callback returns
-            this.note.tone = updatedNote.tone ;
             this.note._id = updatedNote._id;
           })
       });

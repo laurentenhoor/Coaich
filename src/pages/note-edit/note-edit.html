@@ -1,8 +1,13 @@
 <ion-header>
     <ion-navbar>
         <ion-title>
-            <ion-icon name="lock"></ion-icon> Brain Dump</ion-title>
+            Brain Dump
+        </ion-title>
         <ion-buttons end>
+
+            <button ion-button (click)="analyze()" *ngIf="changedAndNotAnalyzedYet">
+                Analyze
+            </button>
 
             <button ion-button icon-only *ngIf="!isChanging && !isSaved">
                 <!-- <ion-icon  name=""></ion-icon> -->
@@ -30,6 +35,11 @@
             rows="15"></ion-textarea>
     </ion-item>
 
-    <tone-viewer [tone]="note.tone"></tone-viewer>
+    <tone-viewer [tone]="note.tone" *ngIf="!loadingTone"></tone-viewer>
+    
+    <div style="text-align:center;">
+        <ion-spinner name="dots" *ngIf="loadingTone"></ion-spinner>
+    </div>
+
 
 </ion-content>

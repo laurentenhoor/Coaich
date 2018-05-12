@@ -23,7 +23,7 @@ export class Notes {
         // });
     }
 
-    getNoteTone(note: Note): Promise<any> {
+    private getNoteTone(note: Note): Promise<any> {
         return new Promise((resolve, reject) => {
             if (!note.text) {
                 resolve(null)
@@ -35,7 +35,7 @@ export class Notes {
                     'Access-Control-Allow-Origin': '*'
                 })
             };
-            let data = {'text': note.text};
+            let data = { 'text': note.text };
 
             this.http.post(apiUrl, data, httpOptions).subscribe(response => {
                 console.log('Watson API response:', response)
@@ -47,7 +47,7 @@ export class Notes {
         })
     }
 
-    save(note: Note): Promise<Note> {
+    analyzeTone(note: Note): Promise<Note> {
         return new Promise((resolve, reject) => {
             this.getNoteTone(note).then(tone => {
                 note['tone'] = tone;
@@ -58,7 +58,18 @@ export class Notes {
         })
     }
 
-    updateOrInsert(note: Note): Promise<Note> {
+    save(note: Note): Promise<Note> {
+        return new Promise((resolve, reject) => {
+            // this.getNoteTone(note).then(tone => {
+            // note['tone'] = tone;
+            this.updateOrInsert(note).then(note => {
+                resolve(note);
+            }, error => console.error(error));
+            // }, error => console.error(error));
+        })
+    }
+
+    private updateOrInsert(note: Note): Promise<Note> {
         return new Promise((resolve, reject) => {
             let self = this;
             if (note._id) {
@@ -77,7 +88,7 @@ export class Notes {
                     if (err) {
                         return reject(err)
                     } else {
-                        note._id=response.id;
+                        note._id = response.id;
                         return resolve(note);
                     }
                 });
