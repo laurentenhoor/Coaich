@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.nozemans.coaich" version="0.0.5" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>My Brain Works</name>
-    <description>Self-reflection Facilitator</description>
+<widget id="com.nozemans.coaich" version="0.0.6" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>My Brain Coach</name>
+    <description>AI Self-Reflection Facilitator</description>
     <author email="laurentenhoor@gmail.com" href="http://nozemans.com/">Lauren ten Hoor</author>
     <content src="index.html" />
     <access origin="*" />
