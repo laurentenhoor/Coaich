@@ -1,26 +1,21 @@
 <ion-header>
-    <ion-navbar>
-        <ion-title>
-                <ion-icon name=""></ion-icon> Brain Dump
-        </ion-title>
+    <ion-toolbar>
+        <ion-title>Brain Dump</ion-title>
         <ion-buttons end>
-
-            <button ion-button (click)="analyze()" *ngIf="changedAndNotAnalyzedYet">
+            <button ion-button color="royal" (click)="analyze()" *ngIf="changedAndNotAnalyzedYet">
                 Analyze
             </button>
-
-            <button ion-button icon-only *ngIf="!isChanging && !isSaved">
-                <!-- <ion-icon  name=""></ion-icon> -->
-            </button>
-            <button ion-button icon-only *ngIf="isChanging">
-                <!-- <ion-icon name="cloud"></ion-icon> -->
-            </button>
-            <button ion-button icon-only *ngIf="!isChanging && isSaved">
-                <!-- <ion-icon  name="cloud-done"></ion-icon> -->
-            </button>
+            <!-- <button ion-button icon-only *ngIf="!isChanging && !isSaved">
+                    <ion-icon  name=""></ion-icon>
+                </button>
+                <button ion-button icon-only *ngIf="isChanging">
+                    <ion-icon name="cloud"></ion-icon>
+                </button>
+                <button ion-button icon-only *ngIf="!isChanging && isSaved">
+                    <ion-icon  name="cloud-done"></ion-icon>
+                </button> -->
         </ion-buttons>
-    </ion-navbar>
-
+    </ion-toolbar>
 </ion-header>
 
 <ion-content overflow-scroll="true" no-bounce>
@@ -36,10 +31,9 @@
     </ion-item>
 
     <tone-viewer [tone]="note.tone" *ngIf="!loadingTone"></tone-viewer>
-    
+
     <div style="text-align:center;">
         <ion-spinner name="dots" *ngIf="loadingTone"></ion-spinner>
     </div>
-
 
 </ion-content>

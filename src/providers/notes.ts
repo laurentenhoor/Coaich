@@ -52,6 +52,7 @@ export class Notes {
     analyzeTone(note: Note): Promise<Note> {
         return new Promise((resolve, reject) => {
             this.getNoteTone(note).then(tone => {
+                console.log('reeived tone:', tone)
                 note['tone'] = tone;
                 this.updateOrInsert(note).then(note => {
                     resolve(note);

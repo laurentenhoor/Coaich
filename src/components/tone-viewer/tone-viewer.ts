@@ -11,7 +11,7 @@ export class ToneViewer {
   private emojiMapping = {
     'analytical': '😐',
     'confident': '💪',
-    'tentative': '🤷‍',
+    'tentative': '🙄',
     'sadness': '😢',
     'anger': '😡',
     'fear': '😧',
