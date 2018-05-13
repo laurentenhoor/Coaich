@@ -40,7 +40,7 @@ export class Diary {
   }
 
   edit(note: Note): void {
-    this.app.getRootNav().push(NoteEdit, { note: note })
+    this.navCtrl.push(NoteEdit, { note: note });
   }
 
   delete(note: Note): void {
