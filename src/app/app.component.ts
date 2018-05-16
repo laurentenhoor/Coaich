@@ -12,7 +12,7 @@ import { Login } from '../pages/login/login';
 })
 
 export class MyApp {
-  rootPage:any = Login;
+  rootPage:any = Diary;
 
   constructor(
     platform: Platform, 

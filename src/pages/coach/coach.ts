@@ -15,7 +15,7 @@ export class Coach {
   }
 
   logout() {
-    this.modalCtrl.create(Login).present();
+    // this.modalCtrl.create(Login).present();
   }
 
 }

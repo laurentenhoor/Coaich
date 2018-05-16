@@ -28,15 +28,15 @@ export class Diary {
     private splashScreen: SplashScreen
   ) {
     this.notes = this.notesService.getAll();
-    this.platform.ready().then(() => {
-      this.platform.pause.subscribe(() => {
-        console.log('[INFO] App paused');
-        this.loginService.show(this.navCtrl, Login);
-      });
-      this.platform.resume.subscribe(() => {
-        console.log('[INFO] App resumed');
-      });
-    });
+    // this.platform.ready().then(() => {
+    //   this.platform.pause.subscribe(() => {
+    //     console.log('[INFO] App paused');
+    //     this.loginService.show(this.navCtrl, Login);
+    //   });
+    //   this.platform.resume.subscribe(() => {
+    //     console.log('[INFO] App resumed');
+    //   });
+    // });
   }
 
   edit(note: Note): void {

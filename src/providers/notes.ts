@@ -23,8 +23,6 @@ export class Notes {
         // });
     }
 
-
-
     private getNoteTone(note: Note): Promise<any> {
         return new Promise((resolve, reject) => {
             if (!note.text) {
